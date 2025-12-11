@@ -23,11 +23,10 @@ jobs:
         echo "Asia/Seoul" | sudo tee /etc/timezone
         date
 
-    - name: Push changes
+    - name: Set Git User Info
       run: |
         git config --global user.name 'Leeeydia'
-        git config --global user.email ' 172202826+Leeeydia@users.noreply.github.com'
-        git push https://${{ secrets.GH_PAT }}@github.com/Leeeydia/velog.git
+        git config --global user.email '172202826+Leeeydia@users.noreply.github.com'
 
     - name: Set up Python
       uses: actions/setup-python@v2
@@ -44,4 +43,8 @@ jobs:
     - name: Commit changes
       run: |
         git add .
-        git commit -m "Auto update blog posts"
+        git commit -m "Auto update blog posts" || echo "Nothing to commit"
+
+    - name: Push changes
+      run: |
+        git push https://${{ secrets.GH_PAT }}@github.com/Leeeydia/velog.git
