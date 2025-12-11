@@ -43,7 +43,7 @@ jobs:
     - name: Commit changes
       run: |
         git add .
-        git commit -m "Auto update blog posts" || echo "Nothing to commit"
+        git commit -m "Auto update blog posts"
 
     - name: Push changes
       run: |
